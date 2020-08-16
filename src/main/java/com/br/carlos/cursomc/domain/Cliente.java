@@ -18,22 +18,24 @@ import com.br.carlos.cursomc.domain.enums.TipoCliente;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-public class Cliente implements Serializable{
+public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Integer id;
 	private String nome;
 	private String email;
 	private String cpfOuCnpj;
 	private Integer tipoCliente;
-	
+
 	List<Endereco> enderecos = new ArrayList<>();
-	
-	private Set<String> telefones = new HashSet<>(); 
-	
+
+	private Set<String> telefones = new HashSet<>();
+
+	List<Pedido> pedidos = new ArrayList<>();
+
 	public Cliente() {
-		
+
 	}
 
 	public Cliente(Integer id, String nome, String email, String cpfOuCnpj, TipoCliente tipoCliente) {
@@ -45,7 +47,6 @@ public class Cliente implements Serializable{
 		this.tipoCliente = tipoCliente.getCod();
 	}
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() {
@@ -99,13 +100,22 @@ public class Cliente implements Serializable{
 	}
 
 	@ElementCollection
-	@CollectionTable(name="TELEFONE")
+	@CollectionTable(name = "TELEFONE")
 	public Set<String> getTelefones() {
 		return telefones;
 	}
 
 	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
+	}
+
+	@OneToMany(mappedBy = "cliente")
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 	@Override
@@ -132,11 +142,5 @@ public class Cliente implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
-	
-	
+
 }
