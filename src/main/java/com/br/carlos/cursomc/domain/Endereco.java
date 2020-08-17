@@ -108,7 +108,7 @@ public class Endereco implements Serializable{
 		this.cep = cep;
 	}
 
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="cliente_id")
 	public Cliente getCliente() {
@@ -119,7 +119,7 @@ public class Endereco implements Serializable{
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name="cidade_id")
 	public Cidade getCidade() {
