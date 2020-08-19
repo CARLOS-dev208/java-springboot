@@ -8,6 +8,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -66,6 +67,7 @@ public class Cliente implements Serializable {
 		this.nome = nome;
 	}
 
+	@Column(unique = true)
 	public String getEmail() {
 		return email;
 	}

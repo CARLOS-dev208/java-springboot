@@ -2,6 +2,14 @@ package com.br.carlos.cursomc.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+import com.br.carlos.cursomc.services.validation.ClienteInsert;
+
+@ClienteInsert
 public class ClienteNewDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -26,6 +34,8 @@ public class ClienteNewDTO implements Serializable{
 	public ClienteNewDTO() {
 	}
 
+	@NotEmpty(message = "Preenchimento Obrigatorio!")
+	@Length(min = 5, max = 120, message = "O nome deve ser entre 5 e 120 caracteres")
 	public String getNome() {
 		return nome;
 	}
@@ -34,6 +44,8 @@ public class ClienteNewDTO implements Serializable{
 		this.nome = nome;
 	}
 
+	@NotEmpty(message = "Preenchimento do Email e obrigatorio!")
+	@Email(message = "Email invalido!")
 	public String getEmail() {
 		return email;
 	}
@@ -41,7 +53,8 @@ public class ClienteNewDTO implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+ 
+	@NotEmpty(message = "Preenchimento Obrigatorio!")
 	public String getCpfOuCnpj() {
 		return cpfOuCnpj;
 	}
@@ -58,6 +71,7 @@ public class ClienteNewDTO implements Serializable{
 		this.tipoCliente = tipoCliente;
 	}
 
+	@NotEmpty(message = "Preenchimento Obrigatorio!")
 	public String getLogradouro() {
 		return logradouro;
 	}
@@ -66,6 +80,7 @@ public class ClienteNewDTO implements Serializable{
 		this.logradouro = logradouro;
 	}
 
+	@NotEmpty(message = "Preenchimento Obrigatorio!")
 	public String getNumero() {
 		return numero;
 	}
@@ -90,6 +105,7 @@ public class ClienteNewDTO implements Serializable{
 		this.bairro = bairro;
 	}
 
+	@NotEmpty(message = "Preenchimento Obrigatorio!")
 	public String getCep() {
 		return cep;
 	}
@@ -98,6 +114,7 @@ public class ClienteNewDTO implements Serializable{
 		this.cep = cep;
 	}
 
+	@NotEmpty(message = "Preenchimento Obrigatorio!")
 	public String getTelefone1() {
 		return telefone1;
 	}
