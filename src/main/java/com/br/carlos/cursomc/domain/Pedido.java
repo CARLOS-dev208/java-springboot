@@ -45,7 +45,7 @@ public class Pedido implements Serializable{
 		this.enderecoDeEntrega = enderecoDeEntrega;
 	}
 	
-	public double getValorTotal() {
+	/*public double getValorTotal() {
 		double soma = 0.0;
 		for (ItemPedido ip : itens) {
 			soma = soma + ip.getSubTotal();
@@ -55,7 +55,7 @@ public class Pedido implements Serializable{
 	
 	public void setValorTotal(double valorTotal) {
 		
-	}
+	}*/
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
